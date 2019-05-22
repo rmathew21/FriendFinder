@@ -1,9 +1,12 @@
 const path = require("path");
 
-app.get("/survey", function(req, res) {
-    res.sendFile(path.join(_dirname, "./app/public/surey.html"));
-});
+module.exports = function (app) {
+    app.get("/survey", function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/survey.html"));
+    });
 
-// app.get("/home", function (req, res) {
-    res.sendFile(path.join(_dirname, "./app/public/home.html"));
-// });
+    app.get("*", function (req, res) {
+        res.sendFile(path.join(__dirname, "../public/home.html"));
+    });
+
+};
